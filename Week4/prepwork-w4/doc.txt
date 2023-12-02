@@ -1,0 +1,71 @@
+
+recipes:
+
+  Stores information about each recipe, including its name, categories (stored as references to the categories collection), and a list of steps and ingredients.
+
+categories:
+
+  Stores unique category names. Each category in the recipes collection references an entry in this collection.
+
+
+
+
+Document Structure:
+
+
+
+  recipes Collection:
+
+    {
+  "_id": ObjectId("recipe_id"),
+  "name": "Chocolate Cake",
+  "categories": [
+    ObjectId("category_id_cake"),
+    ObjectId("category_id_dessert"),
+    ObjectId("category_id_vegetarian")
+  ],
+  "ingredients": [
+    "Cocoa Powder",
+    "Flour",
+    "Sugar",
+    "Baking Soda",
+    "Milk",
+    "Butter"
+  ],
+  "steps": [
+    "Mix dry ingredients",
+    "Add wet ingredients and blend",
+    "Pour into cake pan",
+    "Bake for 30 minutes",
+    "Let it cool before serving"
+  ]
+}
+
+
+  categories Collection:
+
+
+  {
+  "_id": ObjectId("category_id_cake"),
+  "name": "Cake"
+}
+{
+  "_id": ObjectId("category_id_dessert"),
+  "name": "Dessert"
+}
+{
+  "_id": ObjectId("category_id_vegetarian"),
+  "name": "Vegetarian"
+}
+
+
+Embedding:
+
+
+Categories are relatively static, and there's no need for complex queries based on categories.
+Ingredients and steps can be queried independently, and there's possibility for them to be reused in many recipes.
+
+
+
+
+
